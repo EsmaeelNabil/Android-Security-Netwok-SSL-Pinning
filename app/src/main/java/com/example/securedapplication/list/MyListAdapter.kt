@@ -32,6 +32,8 @@ class MyListAdapter() :
         RecyclerView.ViewHolder(binder.root) {
         fun bindViews(item: DummyListResponse.DummyListResponseItem) {
             binder.image.load(item.avatar)
+            binder.text.text = item.name
+            binder.date.text = item.createdAt
         }
     }
 

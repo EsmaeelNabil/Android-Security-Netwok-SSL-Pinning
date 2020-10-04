@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="16dp"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+
+    <Button
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:id="@+id/listButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/border"
+        android:backgroundTint="#272626"
+        android:text="List Example"
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/border"
+        android:backgroundTint="#272626"
+        android:text="Login Example"
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
+</LinearLayout>

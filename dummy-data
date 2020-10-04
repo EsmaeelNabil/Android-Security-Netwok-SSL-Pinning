@@ -1,0 +1,12 @@
+// random images
+https://picsum.photos/id/1015/367/267
+
+// modified Login response
+[{"id":"1","createdAt":"2020-09-30T21:53:43.925Z","name":"Hacked User Account","avatar":"https://picsum.photos/id/1015/367/267","isAdmin":true,"isPremium":true}]
+
+// modified Login response
+[{"id":"1","createdAt":"2020-09-30T21:53:43.925Z","name":"Hacked User Account","avatar":"https://picsum.photos/id/1015/367/267","isAdmin":true,"isPremium":true}]
+
+
+// for making apps debuggable + remove certificate pinning
+https://github.com/shroudedcode/apk-mitm

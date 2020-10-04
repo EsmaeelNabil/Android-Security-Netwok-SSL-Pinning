@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="userItem"
+            type="com.example.securedapplication.network.UserResponse.UserResponseItem" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#313637"
+            android:orientation="vertical"
+            android:padding="24dp"
+            tools:context=".login.LoginActivity">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/defaultLoginButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/border"
+                    android:backgroundTint="#F44336"
+                    android:src="@color/colorPrimary"
+                    android:text="Default Login"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    app:roundPercent="10" />
+
+                <Button
+                    android:id="@+id/safeLoginButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/border"
+                    android:backgroundTint="#4CAF50"
+                    android:src="@color/colorPrimary"
+                    android:text="Safe Login"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    app:roundPercent="10" />
+
+                <LinearLayout
+                    android:id="@+id/dataLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="@{userItem.dataAvailable? View.VISIBLE : View.GONE}">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="40dp">
+
+                        <androidx.constraintlayout.utils.widget.ImageFilterView
+                            android:id="@+id/ProfileImage"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:src="#8DFDFFCF"
+                            app:imageUrl="@{userItem.avatar}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:roundPercent="100" />
+
+                        <TextView
+                            android:id="@+id/username"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:text="@{userItem.name}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toBottomOf="@id/ProfileImage" />
+
+                        <ImageView
+                            android:id="@+id/isPremium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_baseline_stars_24"
+                            android:visibility="@{userItem.premium? View.VISIBLE : View.GONE}"
+                            app:layout_constraintBottom_toTopOf="@id/ProfileImage"
+                            app:layout_constraintEnd_toEndOf="@id/ProfileImage"
+                            app:layout_constraintTop_toTopOf="@id/ProfileImage" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <Button
+                        android:id="@+id/isAdmin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border"
+                        android:backgroundTint="#F81A1A"
+                        android:text="View/edit/ Sensitive Information"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:visibility="@{userItem.admin? View.VISIBLE : View.GONE}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="start"
+                        android:padding="8dp"
+                        android:scrollbars="vertical"
+                        android:text="Response Body : "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#EDEDED"
+                        android:visibility="@{userItem.admin? View.VISIBLE : View.GONE}" />
+
+                    <TextView
+                        android:id="@+id/responseText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="36dp"
+                        android:scrollbars="vertical"
+                        android:text="@{userItem.toString()}"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold"
+                        android:visibility="@{userItem.admin? View.VISIBLE : View.GONE}"
+                        tools:text="Xml texts" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:layout_marginTop="60dp"
+            android:id="@+id/loader"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</layout>
