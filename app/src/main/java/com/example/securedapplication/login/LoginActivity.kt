@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.securedapplication.R
 import com.example.securedapplication.databinding.ActivityLoginBinding
 import com.example.securedapplication.network.*
+import timber.log.Timber
 import javax.net.ssl.SSLPeerUnverifiedException
 
 class LoginActivity : AppCompatActivity() {
@@ -66,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
                 binder.userItem = response.body()!![0].copy(isDataAvailable = true)
                 binder.executePendingBindings()
             } else {
-                Log.e(TAG, "onResponse: ${response.errorBody()?.string()}")
+                Timber.e( "onResponse: ${response.errorBody()?.string()}")
                 Toast.makeText(
                     applicationContext,
                     "status code : ${response.code()}",
@@ -81,7 +82,7 @@ class LoginActivity : AppCompatActivity() {
             call: retrofit2.Call<UserResponse>,
             t: Throwable
         ) {
-            Log.e(TAG, "onFailure: $t")
+            Timber.e( "onFailure: $t")
             if (t is SSLPeerUnverifiedException)
                 showCustomMessageOnAttackDetected()
                 hideLoader()
