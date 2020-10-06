@@ -1,17 +1,17 @@
-// displayed name
+# displayed name
 name: Android Build
 
-// what actions should run in response to
+# what actions should run in response to
 on: pull_request
 
-// tasks that will be run on each pull request
+# tasks that will be run on each pull request
 jobs:
   build:
-    // define the invironemnt
+    # define the environment
     runs-on: ubuntu-latest
-    // the tasks it self
+    # the tasks it self
     steps:
-      - uses: actions/checkout@v1 // gets the code from the repo to the invironment
+      - uses: actions/checkout@v1 # gets the code from the repo to the environment
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
@@ -20,5 +20,5 @@ jobs:
       - name: Run Tests
         run: ./gradlew test
 
-      - name : Build Project
-        run : ./gradlew assemble
+      - name: Build Project
+        run: ./gradlew assemble
